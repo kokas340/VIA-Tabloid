@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VIA-Tabloid.iml" filepath="$PROJECT_DIR$/.idea/VIA-Tabloid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/ViaTabloid/ViaTabloid.iml" filepath="$PROJECT_DIR$/backend/ViaTabloid/ViaTabloid.iml" />
     </modules>
   </component>
 </project>
