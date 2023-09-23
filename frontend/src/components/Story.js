@@ -3,23 +3,23 @@ import '../css/Story.css';
 
 function Story() {
   const [storyData, setStoryData] = useState(null);
-
+  
   useEffect(() => {
-    const apiUrl = 'https://dummyjson.com/products';
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && Array.isArray(data.products)) {
-          setStoryData(data.products);
-        } else {
-          console.error('Invalid API response:', data);
+    const apiUrl = 'http://localhost:8080/api/story/';
+    async function fetchData() {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      })
-      .catch((error) => {
+        const data = await response.json();
+        setStoryData(data);
+      } catch (error) {
         console.error('Error fetching data:', error);
-      });
+      }
+    }
+    fetchData();
   }, []);
-
   return (
     <div className="story-container">
       <h1 className="story-heading">Stories</h1>
