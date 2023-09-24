@@ -20,6 +20,25 @@ function Story() {
     }
     fetchData();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch('http://localhost:8080/api/story/'+id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');       
+      }
+      window.location.reload();
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+    
+  };
+
   return (
     <div className="story-container">
       <h1 className="story-heading">Stories</h1>
@@ -33,6 +52,7 @@ function Story() {
                 <p>Date: {story.date}</p>
                 <p>Owner: {story.owner}</p>
               </div>
+              <button onClick={() => handleDelete(story.id)}>Delete</button>
             </li>
           ))}
         </ul>
