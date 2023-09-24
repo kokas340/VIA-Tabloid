@@ -1,0 +1,31 @@
+---
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+  backend:
+    build: ./backend/ViaTabloid
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres?currentSchema=viatabloid
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12344
+  database:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12344
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+volumes:
+  postgres_data:
+
