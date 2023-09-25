@@ -59,11 +59,7 @@
             <artifactId>grpc-spring-boot-starter</artifactId>
             <version>4.8.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>your-postgresql-version</version>
-        </dependency>
+
 
         <dependency> <!-- necessary for Java 9+ -->
             <groupId>org.apache.tomcat</groupId>

@@ -1,5 +1,9 @@
 FROM openjdk:17-jdk-alpine
+EXPOSE 8080
+VOLUME /backend_volume
 ARG JAR_FILE=target/*.jar
 COPY ./target/ViaTabloid-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8080
+
 CMD ["java", "-jar", "app.jar"]
+
+
