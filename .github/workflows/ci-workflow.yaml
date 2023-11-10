@@ -1,0 +1,28 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Build React App
+      - name: Build React App
+        working-directory: frontend  
+        run: |
+          npm install
+          npm run build
+
+      # Build and Test Spring API
+      - name: Build and Test Spring API
+        working-directory: backend/ViaTabloid
+        run: |
+          ./mvnw clean install
+          ./mvnw test
