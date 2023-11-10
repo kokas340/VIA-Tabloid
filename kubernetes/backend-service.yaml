@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-via
-  labels: 
-    app: backend-via
+  name: backend-service
 spec:
   selector:
-    app: backend-via
+    app: backend
   ports:
-    - protocol: "TCP"
+    - protocol: TCP
       port: 8080
       targetPort: 8080
   type: NodePort
