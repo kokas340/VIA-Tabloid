@@ -13,13 +13,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
       # Build React App
       - name: Build React App
         working-directory: frontend
         run: |
           npm install
           npm run build
-      # Build and test Spring API. Add also ./mvnw test fro the test
+
+      # Build and test Spring API. Add also ./mvnw test for the test
       - name: Build and Test Spring API
         working-directory: backend/ViaTabloid
         run: |
