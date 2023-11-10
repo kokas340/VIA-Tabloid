@@ -14,6 +14,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+
+      - name: Try the cluster!
+        run: kubectl get pods -A
+
       - name: Configure Kubernetes Context
         run: kubectl config use-context minikube
 
