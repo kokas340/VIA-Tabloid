@@ -23,7 +23,9 @@ jobs:
       - name: Build and Test Spring API
         working-directory: backend/ViaTabloid
         run: |
+          chmod +x mvnw
           ./mvnw clean install
+          ./mvnw test
           
       # Build and push Docker image for React App
       - name: Build and Push Docker Image - React App
