@@ -15,14 +15,27 @@ jobs:
 
       # Build React App
       - name: Build React App
-        working-directory: frontend  
+        working-directory: frontend
         run: |
           npm install
           npm run build
-
-      # Build and Test Spring API
+      # Build and test Spring API. Add also ./mvnw test fro the test
       - name: Build and Test Spring API
         working-directory: backend/ViaTabloid
         run: |
           ./mvnw clean install
-          ./mvnw test
+          
+      # Build and push Docker image for React App
+      - name: Build and Push Docker Image - React App
+        working-directory: frontend
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+
+      # Build and push Docker image for Spring API
+      - name: Build and Push Docker Image - Spring API
+        working-directory: backend/ViaTabloid
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-api:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend-api:latest
