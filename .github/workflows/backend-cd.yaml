@@ -13,7 +13,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+        
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+        
       - name: Configure Kubernetes Context
         run: kubectl config use-context minikube
 
