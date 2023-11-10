@@ -26,5 +26,4 @@ jobs:
       - name: Apply Frontend Manifests
         run: kubectl apply -f kubernetes/frontend-deployment.yaml -f kubernetes/frontend-service.yaml
         
-      - name: Open Minikube Dashboard
-        run: minikube dashboard
+
